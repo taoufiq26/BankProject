@@ -9,11 +9,13 @@ import banque.serveur.IBanque;
 
 public class IAnnuaireImpl extends UnicastRemoteObject implements IAnnuaire{
 	private HashMap<String,ArrayList<IBanque> > map;
+	private Thread testConnexion;
 	protected IAnnuaireImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 		map = new HashMap<String,ArrayList<IBanque> >();
-		new Thread(new TestConnexionThread(map)).start();
+		testConnexion= new Thread(new TestConnexionThread(map));
+		testConnexion.start();
 	}
 
 	@Override
@@ -25,9 +27,12 @@ public class IAnnuaireImpl extends UnicastRemoteObject implements IAnnuaire{
 	@Override
 	public synchronized void registerBanque(IBanque ibanque,String code) throws RemoteException {
 		// TODO Auto-generated method stub
+		testConnexion.stop();
 		if(map.get(code)==null){
 			map.put(code, new ArrayList<IBanque>());
 		}
 		map.get(code).add(ibanque);
+		testConnexion= new Thread(new TestConnexionThread(map));
+		testConnexion.start();
 	}
 }

@@ -9,7 +9,7 @@ import annuaire.serveur.IAnnuaire;
 
 public class BanqueServer {
 	static String code = "abc";
-	static String annuaireUrl="rmi://localhost/Annuaire";
+	static String annuaireUrl="rmi://192.168.10.1/Annuaire";
 	public static void main(String[] args) throws MalformedURLException, RemoteException, NotBoundException {
 		IAnnuaire iAnnuaire = (IAnnuaire) Naming.lookup(annuaireUrl);
 		iAnnuaire.registerBanque(new IBanqueImpl(), code);

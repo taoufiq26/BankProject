@@ -31,6 +31,7 @@ public class IBanqueImpl extends UnicastRemoteObject implements IBanque{
 	@Override
 	public boolean testConnexion() throws RemoteException {
 		// TODO Auto-generated method stub
+		System.out.println("called test remote");
 		return true;
 	}
 

@@ -19,19 +19,21 @@ public class IAnnuaireImpl extends UnicastRemoteObject implements IAnnuaire{
 	}
 
 	@Override
-	public synchronized IBanque getBanque(String code) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+	public synchronized ArrayList<IBanque> getBanque(String code) throws RemoteException {
+		return map.get(code);
 	}
-
 	@Override
-	public synchronized void registerBanque(IBanque ibanque,String code) throws RemoteException {
+	public synchronized void registerBanque(IBanque ibanque,String codeBanque) throws RemoteException {
 		// TODO Auto-generated method stub
 		testConnexion.stop();
-		if(map.get(code)==null){
-			map.put(code, new ArrayList<IBanque>());
+		if(map.get(codeBanque)!=null && map.get(codeBanque).size()>0)
+		ibanque.initialiserAgence(map.get(codeBanque).get(0).getAgences());
+		
+		
+		if(map.get(codeBanque)==null){
+			map.put(codeBanque, new ArrayList<IBanque>());
 		}
-		map.get(code).add(ibanque);
+		map.get(codeBanque).add(ibanque);
 		testConnexion= new Thread(new TestConnexionThread(map));
 		testConnexion.start();
 	}

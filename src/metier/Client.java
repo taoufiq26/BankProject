@@ -1,17 +1,35 @@
 package metier;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+@Entity
 public class Client {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	private String nom;
 	private String prenom;
-	private String login;
 	private String password;
+	private String adresse;
 	private Date updatedAt;
 	private Date createdAt;
+	@ManyToOne
 	private Agence agence;
-	private Compte compte;
+	@OneToMany(mappedBy="client")
+	private List<Compte> comptes;
+	
+	public Client() {
+		super();
+		comptes=new ArrayList<Compte>();
+	}
 	public long getId() {
 		return id;
 	}
@@ -30,18 +48,7 @@ public class Client {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
-		this.login = login;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}
@@ -60,12 +67,27 @@ public class Client {
 	public void setAgence(Agence agence) {
 		this.agence = agence;
 	}
-	public Compte getCompte() {
-		return compte;
+	public List<Compte> getComptes() {
+		return comptes;
 	}
-	public void setCompte(Compte compte) {
-		this.compte = compte;
+	public void setComptes(List<Compte> comptes) {
+		this.comptes = comptes;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getAdresse() {
+		return adresse;
+	}
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+	
+	
+	
 	
 	
 }

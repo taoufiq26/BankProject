@@ -2,5 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="C:/Users/TAOUFIQ/workspace/LunaWorkspaceJEE/ProjetBanque/lib/eclipselink-2.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TAOUFIQ/workspace/LunaWorkspaceJEE/ProjetBanque/lib/javax.persistence-2.0.0-20090912.061121-165.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TAOUFIQ/workspace/LunaWorkspaceJEE/ProjetBanque/lib/mysql-connector-java-5.1.27-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

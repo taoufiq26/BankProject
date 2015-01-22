@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
+  <persistence-unit name="unite" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>metier.Agence</class>
+    <class>metier.Banque</class>
+    <class>metier.Client</class>
+    <class>metier.Compte</class>
+
+   
+    <properties>
+      <property name="eclipselink.target-database" value="MySQL"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/BanqueDB"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="eclipselink.loggin.session" value="false"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="eclipselink.ddl-generation" value="create-tables-create"/>
+<!--       <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/> -->
+      <property name="eclipselink.logging.level" value="ALL"/>
+      <property name="eclipselink.jdbc.read-connections.max" value="100"/>
+
+    </properties>
+  </persistence-unit>
+</persistence>
